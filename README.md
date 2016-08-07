@@ -55,7 +55,7 @@ the second function twice.
 ##### Syntax
 
 ```
-void ifAsync(test, true_cb[, args...], done_cb);
+void ifAsync(test, true_cb[, ...args], done_cb);
 ```
 
 ###### Parameters
@@ -67,10 +67,10 @@ void ifAsync(test, true_cb[, args...], done_cb);
   The function invoked if the `test` function above returns truthy.
   Accepts no targ
   Expected to be asynchronous.
-  Accepts arguments provided in `args...` parameter described below.
+  Accepts arguments provided in `...args` parameter described below.
   Void return value.
 
-* **args...**  
+* **...args**  
   Optional.
   One or more arguments of any type, to be passed into `true_cb` function.
 

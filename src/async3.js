@@ -1,9 +1,4 @@
-(function(ctx, def) {
-  if ('function' === typeof require && typeof exports === typeof module) {
-    return module.exports = def;
-  }
-  return ctx.Async3 = def;
-})(this, (function() {
+(() => {
   var Async3 = {};
 
   // use like: forEachAsyncSerial(Post.find(), (next, post) => { /* ... */ next(); }, () => { /* done! */ });
@@ -14,7 +9,7 @@
         if ('function' == typeof done_cb) done_cb();
         return;
       }
-      each_cb(next, a[i++]);
+      each_cb(next, a[i], i++);
     };
     setTimeout(next, 0);
   };
@@ -29,7 +24,7 @@
     };
     setTimeout(() => {
       for (let j=0, len=a.length; j<len; j++)
-        each_cb(next, a[j]);
+        each_cb(next, a[j], j);
     }, 0);
   };
 
@@ -58,11 +53,11 @@
 
     setTimeout(() => {
       for (let len=Math.min(size, a.length); c<len; c++)
-        each_cb(next, a[i++]);
+        each_cb(next, a[i], i++);
     }, 0);
   };
 
-  Async3.ifAsync(/* test, true_fn, args..., done_cb */) {
+  Async3.ifAsync = function(/* test, true_fn, args..., done_cb */) {
     var args = Array.prototype.slice.call(arguments);
     var test = args.shift();
     var done_cb = args.pop();
@@ -77,5 +72,9 @@
     }
   };
 
-  return Async3;
-})());
+  if ('function' === typeof define) // Require.JS
+    return define((require, exports, module) => module.exports = Async3);
+  else if ('function' === typeof require && typeof exports === typeof module) // Node.JS
+    return module.exports = Async3;
+  window.Async3 = Async3; // Browser
+})();
