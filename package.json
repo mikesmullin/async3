@@ -1,0 +1,16 @@
+{
+  "name": "async3",
+  "version": "0.0.1",
+  "description": "Procedural asynchronous flow control for JavaScript in Node.JS and browsers.",
+  "main": "src/async3.js",
+  "scripts": {
+    "test": "nodemon --watch ./ --delay 1 --exec 'mocha --reporter spec --bail --ui bdd --colors --timeout 10000 test/*.js'"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.1",
+    "nodemon": "^1.10.0"
+  }
+}
