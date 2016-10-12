@@ -1,6 +1,6 @@
 {
   "name": "async3",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Procedural asynchronous flow control for JavaScript in Node.JS and browsers.",
   "main": "src/async3.js",
   "scripts": {
